@@ -38,9 +38,6 @@ export default class Scan extends React.Component {
 
   deserializeData = data => {
     this.props.navigation.navigate("Users", {
-      user: data
-        .split("&")
-        .map(a => ({ [a.split("=")[0]]: a.split("=")[1] }))[0].u,
       answers: data
         .split("&")
         .map(a => ({ [a.split("=")[0]]: a.split("=")[1] }))

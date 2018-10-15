@@ -26,7 +26,7 @@ import QRCode from "react-native-qrcode";
 
 export default class User extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: navigation.getParam("user", ""),
+    title: navigation.getParam("user", "anoniem"),
     headerRight: (
       <Button
         onPress={() => alert("This is a button!")}
@@ -41,7 +41,7 @@ export default class User extends React.Component {
 
     this.state = {
       user: generatedUsers.find(
-        user => user.name.first === props.navigation.getParam("user", "")
+        user => user.name.first === props.navigation.getParam("user", false)
       ),
       data: "test",
       answers: props.navigation.getParam("answers", [])
@@ -71,12 +71,14 @@ export default class User extends React.Component {
             justifyContent: "space-around"
           }}
         >
-          <QRCode
-            value={`u=${this.state.user.name.first}&${AnswerString2}`}
-            size={150}
-            bgColor="purple"
-            fgColor="white"
-          />
+          {this.state.user && (
+            <QRCode
+              value={AnswerString2}
+              size={150}
+              bgColor="purple"
+              fgColor="white"
+            />
+          )}
         </View>
         <View style={{ flex: 1 }}>
           {questionList.map(({ question, options }, index) => (

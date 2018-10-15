@@ -16,7 +16,7 @@ export default class Question extends React.Component {
   };
 
   render() {
-    const { options, label } = this.props;
+    const { options, label, onChange } = this.props;
     return (
       <View>
         <Text style={styles.Question}>{this.props.label}</Text>
@@ -36,7 +36,7 @@ export default class Question extends React.Component {
                 padding: 10
               }}
             >
-              <Button onPress={() => Alert.alert(option)} title={option} />
+              <Button onPress={onChange} title={option} />
             </View>
           ))}
         </View>

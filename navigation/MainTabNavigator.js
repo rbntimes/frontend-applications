@@ -14,6 +14,10 @@ import TaxationHome from "../screens/Taxation/HomeScreen";
 import QuestionScreen from "../screens/Taxation/QuestionScreen";
 import ScoreScreen from "../screens/Taxation/ScoreScreen";
 
+import YouthHome from "../screens/Youth/HomeScreen";
+import User from "../screens/Youth/User";
+import Scan from "../screens/Youth/Scan";
+
 const HomeStack = createStackNavigator({
   Home: TaxationHome,
   Questions: {
@@ -41,6 +45,27 @@ HomeStack.navigationOptions = {
   )
 };
 
+const YouthStack = createStackNavigator({
+  Home: YouthHome,
+  Users: User,
+  ScanQr: Scan
+});
+
+YouthStack.navigationOptions = {
+  tabBarLabel: "De jeugd",
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === "ios"
+          ? `ios-people${focused ? "" : "-outline"}`
+          : "md-people"
+      }
+    />
+  )
+};
+
 export default createBottomTabNavigator({
-  HomeStack
+  HomeStack,
+  YouthStack
 });

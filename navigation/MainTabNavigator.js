@@ -2,14 +2,29 @@ import React from "react";
 import { Platform } from "react-native";
 import {
   createStackNavigator,
-  createBottomTabNavigator
+  createBottomTabNavigator,
+  Button
 } from "react-navigation";
 
+import questionList from "../constants/Questions";
+
 import TabBarIcon from "../components/TabBarIcon";
-import HomeScreen from "../screens/HomeScreen";
+
+import TaxationHome from "../screens/Taxation/HomeScreen";
+import QuestionScreen from "../screens/Taxation/QuestionScreen";
+import ScoreScreen from "../screens/Taxation/ScoreScreen";
 
 const HomeStack = createStackNavigator({
-  Home: HomeScreen
+  Home: TaxationHome,
+  Questions: {
+    screen: QuestionScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: `Vraag ${navigation.state.params.questionId + 1}/${
+        questionList.length
+      }`
+    })
+  },
+  Score: ScoreScreen
 });
 
 HomeStack.navigationOptions = {

@@ -10,13 +10,13 @@ import {
   Alert
 } from "react-native";
 
-import questionList from "../constants/Questions";
-import { Jarno } from "../constants/Users";
-import Question from "../components/Question";
+import questionList from "../../constants/Questions";
+import { Youth } from "../../constants/Users";
+import Question from "../../components/Question";
 
-export default class HomeScreen extends React.Component {
+export default class ScoreScreen extends React.Component {
   static navigationOptions = {
-    title: Jarno.name
+    title: Youth[0].name
   };
 
   render() {
@@ -25,15 +25,11 @@ export default class HomeScreen extends React.Component {
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
       >
-        <View style={{ width: "100%" }}>
-          {Object.keys(questionList).map(question => (
-            <Question
-              key={question}
-              label={question}
-              options={questionList[question]}
-            />
-          ))}
-        </View>
+        <Text>
+          {`${(
+            Math.random() * this.props.navigation.getParam("questionId", 1)
+          ).toFixed(2)}%`}
+        </Text>
       </ScrollView>
     );
   }

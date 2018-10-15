@@ -1,6 +1,7 @@
 export default [
-  { question: "Geslacht ", options: ["Vrouw", "Man"] },
+  { category: "Algemeen", question: "Geslacht ", options: ["Vrouw", "Man"] },
   {
+    category: "Algemeen",
     question: "Herkomst ouders",
     options: [
       "Beide ouders Nederlands",
@@ -9,6 +10,7 @@ export default [
     ]
   },
   {
+    category: "Huisvesting",
     question: "Type huishouden",
     options: [
       "Gehuwd paar met kinderen",
@@ -22,8 +24,13 @@ export default [
       "Onbekend huishouden"
     ]
   },
-  { question: "Gescheiden ouders", options: ["Nee", "Ja"] },
   {
+    category: "Huiselijke relaties",
+    question: "Gescheiden ouders",
+    options: ["Nee", "Ja"]
+  },
+  {
+    category: "Werk & Opleiding",
     question: "Voortijdig schoolverlaten",
     options: [
       "Door in onderwijs",
@@ -34,10 +41,12 @@ export default [
     ]
   },
   {
+    category: "Werk & Opleiding",
     question: "Soort onderwijs",
     options: ["Regulier onderwijs", "Onbekend", "Niet-regulier onderwijs"]
   },
   {
+    category: "Huisvesting",
     question: "Soort woning",
     options: [
       "Eigen woning",
@@ -47,6 +56,7 @@ export default [
     ]
   },
   {
+    category: "Maatschappelijke participatie",
     question: "Werk vader",
     options: [
       "Werkend of overig actief",
@@ -55,6 +65,7 @@ export default [
     ]
   },
   {
+    category: "Maatschappelijke participatie",
     question: "Werk moeder",
     options: [
       "Werkend of overig actief",
@@ -62,15 +73,31 @@ export default [
       "Onbekend"
     ]
   },
-  { question: "Slachtoffer", options: ["Nee", "Ja"] },
   {
-    question: "Traject vooraf",
+    category: "Geestelijke gezondheid",
+    question: "Slachtoffer",
+    options: ["Nee", "Ja"]
+  },
+  {
+    category: "Algemeen",
+    question: "Hulptraject",
     options: [
       "Geen jeugdhulp zonder verblijf gehad",
       "Jeugdhulp zonder verblijf gehad"
     ]
   },
   {
+    category: "Algemeen",
+    question: "Leeftijd kind",
+    options: [
+      "0 tot 4 jaar",
+      "4 tot 8 jaar",
+      "12 tot 16 jaar",
+      "16 tot 18 jaar"
+    ]
+  },
+  {
+    category: "Algemeen",
     question: "Leeftijd moeder bij geboorte",
     options: [
       "Jonger dan 20 jaar",
@@ -82,6 +109,7 @@ export default [
     ]
   },
   {
+    category: "Algemeen",
     question: "Leeftijd vader bij geboorte",
     options: [
       "Jonger dan 25 jaar",
@@ -91,18 +119,25 @@ export default [
       "40 jaar en ouder"
     ]
   },
-  { question: "Vader of moeder verdacht", options: ["Nee", "Ja"] },
-  { question: "Kind verdacht", options: ["Nee", "Ja"] },
-  { question: "Halt delict", options: ["Nee", "Ja"] },
   {
+    category: "Justitie",
+    question: "Vader of moeder verdacht",
+    options: ["Nee", "Ja"]
+  },
+  { category: "Justitie", question: "Kind verdacht", options: ["Nee", "Ja"] },
+  { category: "Justitie", question: "Halt delict", options: ["Nee", "Ja"] },
+  {
+    category: "Werk & Opleiding",
     question: "Verandering onderwijs niveau",
     options: ["Opschalen of gelijk blijvend", "Afschalen", "Onbekend"]
   },
   {
+    category: "Algemeen",
     question: "Leeftijdsverschil ouders",
     options: ["Minder dan 5 jaar", "Meer dan 5 jaar"]
   },
   {
+    category: "Werk & Opleiding",
     question: "Actueel onderwijs niveau",
     options: [
       "Basisonderwijs",
@@ -114,6 +149,7 @@ export default [
     ]
   },
   {
+    category: "Werk & Opleiding",
     question: "Hoogst behaalde diploma vader",
     options: [
       "Onderwijs onbekend",
@@ -124,6 +160,7 @@ export default [
     ]
   },
   {
+    category: "Werk & Opleiding",
     question: "Hoogst behaalde diploma moeder",
     options: [
       "Onderwijs onbekend",
@@ -133,5 +170,5 @@ export default [
       "Vwo, Wo bachelor of Wo master"
     ]
   },
-  { question: "Zwaar traject", options: ["Nee", "Ja"] }
+  { category: "Justitie", question: "Zwaar traject", options: ["Nee", "Ja"] }
 ];

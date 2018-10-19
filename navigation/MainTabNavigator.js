@@ -11,23 +11,19 @@ import questionList from "../constants/Questions";
 import TabBarIcon from "../components/TabBarIcon";
 
 import TaxationHome from "../screens/Taxation/HomeScreen";
+import TaxationUser from "../screens/Taxation/User";
 import QuestionScreen from "../screens/Taxation/QuestionScreen";
 import ScoreScreen from "../screens/Taxation/ScoreScreen";
 
 import YouthHome from "../screens/Youth/HomeScreen";
 import User from "../screens/Youth/User";
 import Scan from "../screens/Youth/Scan";
+import QrCode from "../screens/Youth/QrCode";
 
 const HomeStack = createStackNavigator({
   Home: TaxationHome,
-  Questions: {
-    screen: QuestionScreen,
-    navigationOptions: ({ navigation }) => ({
-      title: `Vraag ${navigation.state.params.questionId + 1}/${
-        questionList.length
-      }`
-    })
-  },
+  User: TaxationUser,
+  Questions: QuestionScreen,
   Score: ScoreScreen
 });
 
@@ -48,11 +44,12 @@ HomeStack.navigationOptions = {
 const YouthStack = createStackNavigator({
   Home: YouthHome,
   Users: User,
-  ScanQr: Scan
+  ScanQr: Scan,
+  ShowQr: QrCode
 });
 
 YouthStack.navigationOptions = {
-  tabBarLabel: "De jeugd",
+  tabBarLabel: "Mijn clienten",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}

@@ -11,26 +11,22 @@ import {
   SectionList
 } from "react-native";
 
-import { Icon, BarCodeScanner, Permissions } from "expo";
-
-import { AnswerString2 } from "../../constants/Answers";
-import { Youth, Martin } from "../../constants/Users";
 import generatedUsers from "../../constants/GeneratedUsers";
-import ClientList from "../../components/ClientList";
-import Score from "../../components/Score";
-import P from "../../components/typography/P";
-import Title from "../../components/typography/Title";
 import questionList from "../../constants/Questions";
-
-import QRCode from "react-native-qrcode";
+import { serialize } from "../../utils";
+import { ScoreContext } from "../../Provider";
 
 export default class User extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: navigation.getParam("user", "anoniem"),
-    headerRight: (
+    title: `${navigation.getParam("score", 5)}%`,
+    headerRight: navigation.getParam("user", false) && (
       <Button
-        onPress={() => alert("This is a button!")}
-        title={`${(Math.random() * 5).toFixed(2)}%`}
+        onPress={() =>
+          navigation.navigate("ShowQr", {
+            user: navigation.getParam("user", "")
+          })
+        }
+        title="Deel de QR"
         color="#000"
       />
     )
@@ -41,76 +37,81 @@ export default class User extends React.Component {
 
     this.state = {
       user: generatedUsers.find(
-        user => user.name.first === props.navigation.getParam("user", false)
+        user => user.name === props.navigation.getParam("user", false)
       ),
-      data: "test",
+      data: this.getAnswers(questionList),
       answers: props.navigation.getParam("answers", [])
     };
   }
 
+  getAnswers = questions => {
+    return questions.reduce(function(list, question, index) {
+      let listItem = list.find(
+        item => item.title && item.title === question.category
+      );
+      if (!listItem) {
+        list.push({
+          title: question.category,
+          data: [
+            {
+              question: question.question,
+              answer: question.options[0].label,
+              unknown:
+                question.options[0].label.toLowerCase().indexOf("onbekend") !==
+                -1
+            }
+          ]
+        });
+      } else {
+        listItem.data.push({
+          question: question.question,
+          answer: question.options[0].label,
+          unknown:
+            question.options[0].label.toLowerCase().indexOf("onbekend") !== -1
+        });
+      }
+
+      return list;
+    }, []);
+  };
+
   render() {
-    console.log(this.state);
     return (
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}
-      >
-        <View
-          style={{
-            flex: 1,
-            flexDirection: "column",
-            justifyContent: "space-around"
-          }}
-        >
-          <Icon.Ionicons name="ios-people" size={72} style={styles.icon} />
-        </View>
-        <View
-          style={{
-            flex: 1,
-            alignItems: "center",
-            justifyContent: "space-around"
-          }}
-        >
-          {this.state.user && (
-            <QRCode
-              value={AnswerString2}
-              size={150}
-              bgColor="purple"
-              fgColor="white"
+      <ScoreContext.Consumer>
+        {context => (
+          <View style={styles.container}>
+            {this.props.navigation.getParam("user", false) ? (
+              <Text style={{ textAlign: "center", fontSize: 18, padding: 10 }}>
+                {this.props.navigation.getParam("user", false)}
+              </Text>
+            ) : (
+              <View />
+            )}
+            {console.log(context)}
+            <SectionList
+              sections={this.state.data}
+              renderItem={({ item }) => (
+                <View style={{ flex: 1, flexDirection: "column" }}>
+                  <Text style={styles.itemHeader}>{item.question}:</Text>
+                  <Text
+                    style={{
+                      color: item.unknown ? "orange" : "black",
+                      padding: 10,
+                      fontSize: 14
+                    }}
+                  >
+                    {item.answer}
+                  </Text>
+                </View>
+              )}
+              renderSectionHeader={({ section }) => (
+                <Text style={styles.sectionHeader}>{section.title}</Text>
+              )}
+              keyExtractor={(item, index) => index}
             />
-          )}
-        </View>
-        <View style={{ flex: 1 }}>
-          {questionList.map(({ question, options }, index) => (
-            <View
-              key={question}
-              style={{
-                flex: 1,
-                justifyContent: "space-between",
-                flexDirection: "row"
-              }}
-            >
-              <Text
-                style={{
-                  width: "100%",
-                  flex: 1,
-                  justifyContent: "space-between"
-                }}
-              >
-                {question}:
-              </Text>
-              <Text>
-                {
-                  options[
-                    Object.values(this.state.answers[index] || { a: "b" })
-                  ]
-                }
-              </Text>
-            </View>
-          ))}
-        </View>
-        <Score score={3.45} />
-      </ScrollView>
+          </View>
+        )}
+      </ScoreContext.Consumer>
     );
   }
 }
@@ -118,17 +119,9 @@ export default class User extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height: "100%",
     padding: 10,
     backgroundColor: "#fff"
-  },
-  contentContainer: {
-    paddingTop: 30
-  },
-  icon: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "space-between",
-    textAlign: "center"
   },
   sectionHeader: {
     paddingTop: 2,
@@ -139,10 +132,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     backgroundColor: "rgba(247,247,247,1.0)"
   },
-  item: {
+  itemHeader: {
     color: "#000",
-    padding: 10,
-    fontSize: 18,
-    height: 44
+    paddingLeft: 10,
+    paddingTop: 10,
+    fontSize: 14,
+    fontWeight: "bold"
   }
 });

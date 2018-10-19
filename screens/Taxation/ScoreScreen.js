@@ -10,27 +10,67 @@ import {
   Alert
 } from "react-native";
 
+import { HeaderBackButton } from "react-navigation";
+
 import questionList from "../../constants/Questions";
 import { Youth } from "../../constants/Users";
-import Question from "../../components/Question";
+import P from "../../components/typography/P";
+
+import ProgressCircle from "react-native-progress-circle";
+import { ScoreContext } from "../../Provider";
+
+import frtg from "from-red-to-green";
 
 export default class ScoreScreen extends React.Component {
-  static navigationOptions = {
-    title: Youth[0].name
-  };
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.getParam("user", ""),
+    headerLeft: (
+      <HeaderBackButton
+        onPress={() => {
+          navigation.navigate("Questions", {
+            questionId: 21
+          });
+        }}
+        title="Vorige"
+      />
+    ),
+    headerRight: (
+      <Button
+        onPress={() => navigation.navigate("Home")}
+        title="Opslaan"
+        color="#000"
+      />
+    )
+  });
 
   render() {
     return (
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}
-      >
-        <Text>
-          {`${(
-            Math.random() * this.props.navigation.getParam("questionId", 1)
-          ).toFixed(2)}%`}
-        </Text>
-      </ScrollView>
+      <ScoreContext.Consumer>
+        {context => (
+          <View style={styles.container}>
+            <View style={styles.progressContainer}>
+              <Text
+                style={{
+                  fontSize: 50,
+                  color: frtg(Math.max(0, Number(1 / Math.ceil(context.score))))
+                }}
+              >
+                {context.score}%
+              </Text>
+              <P>
+                {context.user} heeft een {`${context.score}% `}
+                risico op een zware maatregel. De score is als volgt de
+                verdelen:
+              </P>
+              <View>
+                <P>0 - 2%: Laag risico</P>
+                <P>2 - 5%: Middelmatig risico</P>
+                <P>5% en hoger: Hoog risico</P>
+              </View>
+            </View>
+          </View>
+        )}
+      </ScoreContext.Consumer>
     );
   }
 }
@@ -38,15 +78,15 @@ export default class ScoreScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "space-around",
+    padding: 10,
+    height: "100%",
     backgroundColor: "#fff"
   },
-  contentContainer: {
-    paddingTop: 30
-  },
-  Question: {
-    fontSize: 17,
-    color: "rgba(96,100,109, 1)",
-    lineHeight: 24,
-    textAlign: "center"
+  progressContainer: {
+    flex: 1,
+    height: "100%",
+    justifyContent: "space-around",
+    alignItems: "center"
   }
 });

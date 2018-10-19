@@ -18,25 +18,28 @@ export default class Question extends React.Component {
   render() {
     const { options, label, onChange } = this.props;
     return (
-      <View>
-        <Text style={styles.Question}>{this.props.label}</Text>
-        <View
-          style={{
-            flex: 1,
-            flexDirection: "column",
-            justifyContent: "space-around",
-            alignItems: "center"
-          }}
-        >
+      <View
+        style={{
+          height: "100%",
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "space-around"
+        }}
+      >
+        <View>
+          <Text style={styles.Question}>{this.props.label}</Text>
           {options.map(option => (
             <View
-              key={option}
+              key={`${option.label}-${option.value}`}
               style={{
-                width: "80%",
-                padding: 10
+                padding: 5,
+                textAlign: "center"
               }}
             >
-              <Button onPress={onChange} title={option} />
+              <Button
+                onPress={() => onChange(option.value)}
+                title={option.label}
+              />
             </View>
           ))}
         </View>

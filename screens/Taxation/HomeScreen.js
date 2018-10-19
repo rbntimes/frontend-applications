@@ -53,11 +53,7 @@ export default class HomeScreen extends React.Component {
         </P>
         <Button
           title="+ Nieuwe taxatie"
-          onPress={() =>
-            this.props.navigation.navigate("Questions", {
-              questionId: 0
-            })
-          }
+          onPress={() => this.props.navigation.navigate("User")}
         />
       </ScrollView>
     );

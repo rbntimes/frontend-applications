@@ -1,174 +1,211 @@
 export default [
-  { category: "Algemeen", question: "Geslacht ", options: ["Vrouw", "Man"] },
   {
+    question: "Geslacht",
     category: "Algemeen",
-    question: "Herkomst ouders",
-    options: [
-      "Beide ouders Nederlands",
-      "Beide ouders niet Nederlands",
-      "Een van de ouders Nederlands en de andere niet Nederlands"
-    ]
+    options: [{ label: "Man", value: -0.12611 }, { label: "Vrouw", value: 0.0 }]
   },
   {
-    category: "Huisvesting",
-    question: "Type huishouden",
-    options: [
-      "Gehuwd paar met kinderen",
-      "Eenouderhuishouden",
-      "Eenpersoonshuishouden",
-      "Gehuwd paar zonder kinderen",
-      "Institutioneel huishouden",
-      "Niet-gehuwd paar met kinderen",
-      "Niet-gehuwd paar zonder kinderen",
-      "Overig huishouden",
-      "Onbekend huishouden"
-    ]
-  },
-  {
-    category: "Huiselijke relaties",
-    question: "Gescheiden ouders",
-    options: ["Nee", "Ja"]
-  },
-  {
-    category: "Werk & Opleiding",
-    question: "Voortijdig schoolverlaten",
-    options: [
-      "Door in onderwijs",
-      "Onbekend",
-      "Niet van toepassing",
-      "Uit onderwijs met startkwalificatie",
-      "Voortijdig schoolverlaten"
-    ]
-  },
-  {
-    category: "Werk & Opleiding",
-    question: "Soort onderwijs",
-    options: ["Regulier onderwijs", "Onbekend", "Niet-regulier onderwijs"]
-  },
-  {
-    category: "Huisvesting",
-    question: "Soort woning",
-    options: [
-      "Eigen woning",
-      "Huurwoning met huurtoeslag",
-      "Huurwoning zonder huurtoeslag",
-      "Onbekend"
-    ]
-  },
-  {
-    category: "Maatschappelijke participatie",
-    question: "Werk vader",
-    options: [
-      "Werkend of overig actief",
-      "Geen werk en niet actief",
-      "Onbekend"
-    ]
-  },
-  {
-    category: "Maatschappelijke participatie",
-    question: "Werk moeder",
-    options: [
-      "Werkend of overig actief",
-      "Geen werk en niet actief",
-      "Onbekend"
-    ]
-  },
-  {
-    category: "Geestelijke gezondheid",
     question: "Slachtoffer",
-    options: ["Nee", "Ja"]
+    category: "Algemeen",
+    options: [{ label: "Ja", value: 0.23639 }, { label: "Nee", value: 0.0 }]
   },
   {
-    category: "Algemeen",
-    question: "Hulptraject",
-    options: [
-      "Geen jeugdhulp zonder verblijf gehad",
-      "Jeugdhulp zonder verblijf gehad"
-    ]
-  },
-  {
-    category: "Algemeen",
-    question: "Leeftijd kind",
-    options: [
-      "0 tot 4 jaar",
-      "4 tot 8 jaar",
-      "12 tot 16 jaar",
-      "16 tot 18 jaar"
-    ]
-  },
-  {
-    category: "Algemeen",
     question: "Leeftijd moeder bij geboorte",
+    category: "Huiselijke relaties",
     options: [
-      "Jonger dan 20 jaar",
-      "20 tot 25 jaar",
-      "25 tot 30 jaar",
-      "30 tot 35 jaar",
-      "35 tot 40 jaar",
-      "40 jaar en ouder"
+      { label: "Jonger dan 20 jaar", value: 0.4515 },
+      { label: "20 tot 25 jaar", value: 0.10852 },
+      { label: "25 tot 30 jaar", value: -0.08841 },
+      { label: "30 tot 35 jaar", value: 0.0 },
+      { label: "35 tot 40 jaar", value: 0.23988 },
+      { label: "40 jaar en ouder", value: -0.11153 }
     ]
   },
   {
-    category: "Algemeen",
     question: "Leeftijd vader bij geboorte",
+    category: "Werk & Opleiding",
     options: [
-      "Jonger dan 25 jaar",
-      "25 tot 30 jaar",
-      "30 tot 35 jaar",
-      "35 tot 40 jaar",
-      "40 jaar en ouder"
+      { label: "Jonger dan 25 jaar", value: -0.00587 },
+      { label: "20 tot 25 jaar", value: 0.03107 },
+      { label: "25 tot 30 jaar", value: 0.03107 },
+      { label: "30 tot 35 jaar", value: 0.0 },
+      { label: "35 tot 40 jaar", value: -0.21624 },
+      { label: "40 jaar en ouder", value: -0.32645 }
     ]
   },
   {
-    category: "Justitie",
-    question: "Vader of moeder verdacht",
-    options: ["Nee", "Ja"]
-  },
-  { category: "Justitie", question: "Kind verdacht", options: ["Nee", "Ja"] },
-  { category: "Justitie", question: "Halt delict", options: ["Nee", "Ja"] },
-  {
-    category: "Werk & Opleiding",
-    question: "Verandering onderwijs niveau",
-    options: ["Opschalen of gelijk blijvend", "Afschalen", "Onbekend"]
-  },
-  {
-    category: "Algemeen",
     question: "Leeftijdsverschil ouders",
-    options: ["Minder dan 5 jaar", "Meer dan 5 jaar"]
+    category: "Werk & Opleiding",
+
+    options: [
+      { label: "Minder dan 5 jaar", value: 0.0 },
+      { label: "Meer dan 5 jaar", value: 0.28581 }
+    ]
   },
   {
-    category: "Werk & Opleiding",
+    question: "Herkomst ouders",
+    category: "Huisvesting",
+
+    options: [
+      { label: "Beide ouders Nederlands", value: 0.0 },
+      { label: "Beide ouders niet Nederlands", value: 0.16972 },
+      {
+        label: "Een van de ouders Nederlands en de andere niet Nederlands",
+        value: -0.08943
+      }
+    ]
+  },
+  {
+    question: "Gescheiden ouders",
+    category: "Maatschappelijke participatie",
+
+    options: [{ label: "Ja", value: 0.27683 }, { label: "Nee", value: 0.0 }]
+  },
+  {
+    question: "Soort onderwijs",
+    category: "Maatschappelijke participatie",
+
+    options: [
+      { label: "Regulier onderwijs", value: 0.0 },
+      { label: "Onbekend", value: -0.76957 },
+      { label: "Niet-regulier onderwijs", value: -0.33031 }
+    ]
+  },
+  {
     question: "Actueel onderwijs niveau",
+    category: "Geestelijke gezondheid",
+
     options: [
-      "Basisonderwijs",
-      "Onderwijs onbekend",
-      "Vmbo b/k, mbo 1 of mbo 2",
-      "Vmbo g/t, mbo 3 of mbo 4",
-      "Havo onderbouw, Havo bovenbouw of Hbo bachelor",
-      "Vwo of Wo bachelor"
+      { label: "Basisonderwijs", value: 0.25232 },
+      { label: "Onderwijs onbekend", value: 0.0 },
+      { label: "Vmbo b/k, mbo 1 of mbo 2", value: 0.87842 },
+      { label: "Vmbo g/t, mbo 3 of mbo 4", value: 0.56882 },
+      { label: "Havo onderbouw, Havo bovenbouw of Hbo bachelor", value: 0.0 },
+      { label: "Vwo of Wo bachelor", value: -0.83566 }
     ]
   },
   {
-    category: "Werk & Opleiding",
+    question: "Verandering onderwijs niveau",
+    category: "Algemeen",
+
+    options: [
+      { label: "Opschalen of gelijk blijvend", value: 0.0 },
+      { label: "Afschalen", value: 0.58732 },
+      { label: "Onbekend", value: -1.11682 }
+    ]
+  },
+  {
+    question: "Voortijdig schoolverlaten",
+    category: "Algemeen",
+
+    options: [
+      { label: "Door in onderwijs", value: 0.0 },
+      { label: "Onbekend", value: 0.80564 },
+      { label: "Niet van toepassing", value: 0.38736 },
+      { label: "Uit onderwijs met startkwalificatie", value: -13.64193 },
+      { label: "Voortijdig schoolverlaten", value: 0.34684 }
+    ]
+  },
+  {
+    question: "Soort woning",
+    category: "Algemeen",
+
+    options: [
+      { label: "Eigen woning", value: 0.0 },
+      { label: "Huurwoning met huurtoeslag", value: 0.38401 },
+      { label: "Huurwoning zonder huurtoeslag", value: 0.4042 },
+      { label: "Onbekend", value: 2.40126 }
+    ]
+  },
+  {
+    question: "Type huishouden",
+    category: "Algemeen",
+
+    options: [
+      { label: "Gehuwd paar met kinderen", value: 0.0 },
+      { label: "Eenouderhuishouden", value: 0.49608 },
+      { label: "Eenpersoonshuishouden", value: 1.71859 },
+      { label: "Gehuwd paar zonder kinderen", value: 1.06108 },
+      { label: "Institutioneel huishouden", value: 1.92321 },
+      { label: "Niet-gehuwd paar met kinderen", value: 0.32694 },
+      { label: "Niet-gehuwd paar zonder kinderen", value: -14.1553 },
+      { label: "Overig huishouden", value: 0.91365 },
+      { label: "Onbekend huishouden", value: -13.81002 }
+    ]
+  },
+  {
+    question: "Werk vader",
+    category: "Justitie",
+
+    options: [
+      { label: "Werkend of overig actief", value: 0.0 },
+      { label: "Geen werk en niet actief", value: 0.33772 },
+      { label: "Onbekend", value: 0.23486 }
+    ]
+  },
+  {
+    question: "Werk moeder",
+    category: "Justitie",
+    options: [
+      { label: "Werkend of overig actief", value: 0.0 },
+      { label: "Geen werk en niet actief", value: 0.36958 },
+      { label: "Onbekend", value: -0.95012 }
+    ]
+  },
+  {
     question: "Hoogst behaalde diploma vader",
+    category: "Justitie",
     options: [
-      "Onderwijs onbekend",
-      "Vmbo b/k, mbo 1 of mbo 2",
-      "Vmbo g/t, mbo 3 of mbo 4",
-      "Havo onderbouw, Havo bovenbouw, Hbo bachelor of Hbo master",
-      "Vwo, Wo bachelor of Wo master"
+      { label: "Onderwijs onbekend", value: 0.88464 },
+      { label: "Vmbo b/k, mbo 1 of mbo 2", value: -0.2163 },
+      { label: "Vmbo g/t, mbo 3 of mbo 4", value: 0.67119 },
+      {
+        label: "Havo onderbouw, Havo bovenbouw, Hbo bachelor of Hbo master",
+        value: 0.0
+      },
+      { label: "Vwo, Wo bachelor of Wo master", value: -12.08995 }
     ]
   },
   {
-    category: "Werk & Opleiding",
     question: "Hoogst behaalde diploma moeder",
+    category: "Werk & Opleiding",
     options: [
-      "Onderwijs onbekend",
-      "Vmbo b/k, mbo 1 of mbo 2",
-      "Vmbo g/t, mbo 3 of mbo 4",
-      "Havo onderbouw, Havo bovenbouw, Hbo bachelor of Hbo master",
-      "Vwo, Wo bachelor of Wo master"
+      { label: "Onderwijs onbekend", value: 0.03655 },
+      { label: "Vmbo b/k, mbo 1 of mbo 2", value: 0.15936 },
+      { label: "Vmbo g/t, mbo 3 of mbo 4", value: 0.03334 },
+      {
+        label: "Havo onderbouw, Havo bovenbouw, Hbo bachelor of Hbo master",
+        value: 0.0
+      },
+      { label: "Vwo, Wo bachelor of Wo master", value: -13.03162 }
     ]
   },
-  { category: "Justitie", question: "Zwaar traject", options: ["Nee", "Ja"] }
+  {
+    question: "Kind verdacht",
+    category: "Algemeen",
+    options: [{ label: "Ja", value: 0.94738 }, { label: "Nee", value: 0.0 }]
+  },
+  {
+    question: "Halt delict",
+    category: "Werk & Opleiding",
+    options: [{ label: "Ja", value: 0.36448 }, { label: "Nee", value: 0.0 }]
+  },
+  {
+    question: "Vader of moeder verdacht",
+    category: "Werk & Opleiding",
+    options: [{ label: "Ja", value: 0.50027 }, { label: "Nee", value: 0.0 }]
+  },
+  {
+    question: "Traject vooraf",
+    category: "Werk & Opleiding",
+    options: [
+      { label: "Geen jeugdhulp zonder verblijf gehad", value: 0.0 },
+      { label: "Jeugdhulp zonder verblijf gehad", value: 1.52774 }
+    ]
+  },
+  {
+    question: "Zwaar traject",
+    category: "Justitie",
+    options: [{ label: "Nee", value: 1 }, { label: "Ja", value: 1 }]
+  }
 ];
